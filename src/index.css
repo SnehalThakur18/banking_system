@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #202142;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+}
+
+table {
+  border-spacing: 0;
+  border: 1px solid black;
+  width: 100%;
+  margin-top: 16px;
+}
+
+th {
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+td {
+  text-align: center;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 768px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #fff;
+  color: #333;
+  border-radius: 15px;
+  padding: 40px 50px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.card h2 {
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+h4 {
+  font-weight: 600;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 60%;
+}
+
+label {
+  margin-bottom: 5px;
+  display: block;
+}
+
+.btn {
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  width: 160px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-primary {
+  background-color: #202142;
+}
+
+.btn-secondary {
+  background: #ff6a95;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 9px;
+}
+
+.btn-container {
+  display: flex;
+  gap: 30px;
+  margin: 60px auto;
+  justify-content: center;
+}
+
+.btn-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  height: 48px;
+  color: #fff;
+  background: #ff6a95;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.modal-content {
+  background: #fff;
+  width: 50%;
+  margin: 10% auto;
+  padding: 20px;
+}
