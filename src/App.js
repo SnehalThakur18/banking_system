@@ -24,7 +24,6 @@ function App() {
   };
 
   const handleWithdraw = (amount, remarks) => {
-    console.log("show amoun",amount)
     const numericAmountOnly = parseFloat(amount);
     if (!isNaN(numericAmountOnly) && numericAmountOnly > 0 && balance - numericAmountOnly >= 0) {
       setBalance(balance - numericAmountOnly);
