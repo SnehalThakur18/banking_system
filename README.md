@@ -1,10 +1,16 @@
 # Getting Started with Create React App
 
+Minimum react 17 required to run this project.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Add the node_modules folder for the project. Adds the different packages and manage their dependencies. 
 
 ### `npm start`
 
