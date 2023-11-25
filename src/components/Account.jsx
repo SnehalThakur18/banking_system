@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import TransactionModal from "../Modals/TransactionModal";
 import TransactionHistory from "./TransactionHistory";
+import { useNavigate } from "react-router-dom";
 
 const Account = ({ balance, transactions, onDeposit, onWithdraw }) => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -21,11 +22,13 @@ const Account = ({ balance, transactions, onDeposit, onWithdraw }) => {
     setModalOpen(data);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       <div className="card">
         <h2>Account Overview</h2>
-        <p>Balance: {isNaN(balance) ? 0 : balance}</p>
+        <p>Balance: {isNaN(balance) ? 0 : balance.toLocaleString()}</p>
         <div className="btn-container">
           <button
             className="btn btn-primary"
@@ -38,6 +41,12 @@ const Account = ({ balance, transactions, onDeposit, onWithdraw }) => {
             onClick={() => openModal("Withdraw")}
           >
             Withdraw Amount
+          </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => navigate('/savingsGoal')}
+          >
+            Savings Goal
           </button>
         </div>
       </div>

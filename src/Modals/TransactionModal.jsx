@@ -21,6 +21,15 @@ const TransactionModal = ({ isOpen, onClose, onDeposit, onWithdraw }) => {
     setAmount(0);
     setRemark("");
   };
+
+  const handleAmountChange = (e) => {
+    const amount = e.target.value;
+    // Check if the amount is a valid number
+    if (/^\d*$/.test(amount)) {
+      setAmount(amount);
+    }
+  };
+
   return (
     <div
       className="container"
@@ -31,9 +40,9 @@ const TransactionModal = ({ isOpen, onClose, onDeposit, onWithdraw }) => {
           <h4>Transaction Form</h4>
           <label>Amount:</label>
           <input
-            type="number"
+            type="text"
             value={amount}
-            onChange={(e) => setAmount(parseFloat(e.target.value))}
+            onChange={handleAmountChange}
           />
           <label>Remarks:</label>
           <input

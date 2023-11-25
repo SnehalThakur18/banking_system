@@ -14,7 +14,7 @@ const TransactionHistory = ({ transactions }) => {
         {transactions.map((transaction, index) => (
           <tr key={index}>
             <td>{transaction.type}</td>
-            <td>${transaction.amount}</td>
+            <td>${transaction.amount.toLocaleString()}</td>
             <td>{transaction.remarks}</td>
           </tr>
         ))}

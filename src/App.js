@@ -1,4 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Header from "./components/header";
 import Account from "./components/Account";
 import SavingsGoal from "./components/SavingsGoal";
@@ -10,16 +16,19 @@ function App() {
   const [savingsGoal, setSavingsGoal] = useState(0);
 
   const handleDeposit = (amount, remarks) => {
-    if (amount > 0) {
-      setBalance(balance + amount);
-      updateTransactions("Deposit", amount, remarks);
+    const numericAmountOnly = parseFloat(amount);
+    if (!isNaN(numericAmountOnly) && numericAmountOnly > 0) {
+      setBalance(balance + numericAmountOnly);
+      updateTransactions("Deposit", numericAmountOnly, remarks);
     }
   };
 
   const handleWithdraw = (amount, remarks) => {
-    if (amount > 0 && balance - amount >= 0) {
-      setBalance(balance - amount);
-      updateTransactions("Withdrawal", amount, remarks);
+    console.log("show amoun",amount)
+    const numericAmountOnly = parseFloat(amount);
+    if (!isNaN(numericAmountOnly) && numericAmountOnly > 0 && balance - numericAmountOnly >= 0) {
+      setBalance(balance - numericAmountOnly);
+      updateTransactions("Withdrawal", numericAmountOnly, remarks);
     } else {
       alert("Invalid withdrawal amount or insufficient funds");
     }
@@ -41,17 +50,31 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <Account
-        balance={balance}
-        transactions={transactions}
-        onDeposit={handleDeposit}
-        onWithdraw={handleWithdraw}
-        onSetGoal={handleSetGoal}
-      />
-      <SavingsGoal balance={balance} />
+      <Router>
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Account
+                balance={balance}
+                transactions={transactions}
+                onDeposit={handleDeposit}
+                onWithdraw={handleWithdraw}
+                onSetGoal={handleSetGoal}
+              />
+            }
+          />
+          <Route
+            path="/savingsGoal"
+            element={
+              <SavingsGoal balance={balance} savingsGoal={savingsGoal} />
+            }
+          />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Router>
     </div>
-
   );
 }
 
