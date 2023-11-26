@@ -27,7 +27,6 @@ const SavingsGoal = ({ balance, setSavingsGoal }) => {
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
-
     return () => {
       isMounted.current = false;
       window.removeEventListener("beforeunload", handleBeforeUnload);
