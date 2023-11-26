@@ -64,7 +64,6 @@ function App() {
                 transactions={transactions}
                 onDeposit={handleDeposit}
                 onWithdraw={handleWithdraw}
-                onSetGoal={handleSetGoal}
               />
             }
           />
@@ -74,7 +73,7 @@ function App() {
               <SavingsGoal
                 balance={balance}
                 savingsGoal={savingsGoal}
-                setSavingsGoal={setSavingsGoal}
+                setSavingsGoal={handleSetGoal}
               />
             }
           />
