@@ -25,7 +25,11 @@ function App() {
 
   const handleWithdraw = (amount, remarks) => {
     const numericAmountOnly = parseFloat(amount);
-    if (!isNaN(numericAmountOnly) && numericAmountOnly > 0 && balance - numericAmountOnly >= 0) {
+    if (
+      !isNaN(numericAmountOnly) &&
+      numericAmountOnly > 0 &&
+      balance - numericAmountOnly >= 0
+    ) {
       setBalance(balance - numericAmountOnly);
       updateTransactions("Withdrawal", numericAmountOnly, remarks);
     } else {
@@ -67,7 +71,11 @@ function App() {
           <Route
             path="/savingsGoal"
             element={
-              <SavingsGoal balance={balance} savingsGoal={savingsGoal} />
+              <SavingsGoal
+                balance={balance}
+                savingsGoal={savingsGoal}
+                setSavingsGoal={setSavingsGoal}
+              />
             }
           />
           <Route path="*" element={<Navigate to="/" />} />

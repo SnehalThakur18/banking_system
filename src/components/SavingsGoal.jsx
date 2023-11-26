@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SavingsGoalComparison from "./SavingsGoalComparison";
 import { useNavigate } from "react-router-dom";
 
-const SavingsGoal = ({ balance }) => {
-  const [savingsGoal, setSavingsGoal] = useState(0);
+const SavingsGoal = ({ balance, setSavingsGoal }) => {
+  const [savingsGoal, setLocalSavingsGoal] = useState(0);
+  const isMounted = useRef(true);
 
   const navigate = useNavigate();
 
@@ -11,9 +12,31 @@ const SavingsGoal = ({ balance }) => {
     const amount = e.target.value;
     // Check if the amount is a valid number
     if (/^\d*$/.test(amount)) {
-      setSavingsGoal(amount);
+      setLocalSavingsGoal(amount);
     }
   };
+
+  useEffect(() => {
+    if (isMounted.current) {
+      const savedLatestSavingsGoal = localStorage.getItem("savingsGoal");
+      setLocalSavingsGoal(savedLatestSavingsGoal ? parseFloat(savedLatestSavingsGoal) : 0);
+    }
+
+    const handleBeforeUnload = () => {
+      localStorage.removeItem("savingsGoal");
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      isMounted.current = false;
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("savingsGoal", savingsGoal);
+  }, [savingsGoal]);
 
   return (
     <div className="container">
