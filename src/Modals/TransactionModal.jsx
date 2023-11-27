@@ -38,14 +38,14 @@ const TransactionModal = ({ isOpen, onClose, onDeposit, onWithdraw }) => {
       <div className="modal">
         <div className="modal-content">
           <h4>Transaction Form</h4>
-          <label>Amount:</label>
-          <input
+          <label htmlFor="amountInput">Amount:</label>
+          <input id="amountInput"
             type="text"
             value={amount}
             onChange={handleAmountChange}
           />
-          <label>Remarks:</label>
-          <input
+          <label htmlFor="remarksInput">Remarks:</label>
+          <input id="remarksInput"
             type="text"
             value={remark}
             onChange={(e) => setRemark(e.target.value)}
